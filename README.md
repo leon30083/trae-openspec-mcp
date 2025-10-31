@@ -18,17 +18,44 @@
 - **Trae AI**: 最新版本
 - **操作系统**: Windows/macOS/Linux
 
-### 2. 安装依赖
+### 2. 安装方式
+
+#### 方法1：快速安装（推荐）
 
 ```bash
-# 克隆或下载本项目
+# 1. 克隆MCP工具仓库
 git clone https://github.com/leon30083/trae-openspec-mcp.git
-
-# 进入项目目录
 cd trae-openspec-mcp
 
-# 安装依赖
+# 2. 安装依赖
 npm install
+
+# 3. 启动服务器
+npm start
+```
+
+#### 方法2：全局安装
+
+```bash
+# 1. 全局安装MCP工具
+npm install -g trae-openspec-mcp
+
+# 2. 在任何目录启动服务器
+trae-openspec-mcp
+```
+
+#### 方法3：开发模式安装
+
+```bash
+# 1. 克隆仓库
+git clone https://github.com/leon30083/trae-openspec-mcp.git
+cd trae-openspec-mcp
+
+# 2. 安装开发依赖
+npm install
+
+# 3. 以开发模式启动（带调试信息）
+npm run dev
 ```
 
 ### 3. 启动MCP服务器
