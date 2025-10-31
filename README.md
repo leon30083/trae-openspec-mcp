@@ -77,6 +77,10 @@ node mcp-server.js
 }
 ```
 
+**路径说明（Windows）**
+- 本项目在你的环境中的本地路径为：`F:\\Cursor\\OpenSpec\\mcp-tools`
+- 在 JSON 中使用 Windows 路径时，请使用双反斜杠 `\\`
+- 使用 `npx` 配置时可以省略 `cwd`，由 npm 解析安装目录
 ## 🛠️ 核心工具
 
 ### 1. 创建OpenSpec项目
