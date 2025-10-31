@@ -4,7 +4,7 @@
   "description": "Trae-OpenSpec MCP服务器 - 零命令行的OpenSpec项目创建和管理工具",
   "main": "mcp-server.js",
   "bin": {
-    "trae-openspec-mcp": "./mcp-server.js"
+    "trae-openspec-mcp": "mcp-server.js"
   },
   "scripts": {
     "start": "node mcp-server.js",
@@ -43,7 +43,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/leon30083/trae-openspec-mcp.git"
+    "url": "git+https://github.com/leon30083/trae-openspec-mcp.git"
   },
   "bugs": {
     "url": "https://github.com/leon30083/trae-openspec-mcp/issues"
