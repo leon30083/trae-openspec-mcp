@@ -1,0 +1,52 @@
+{
+  "name": "trae-openspec-mcp",
+  "version": "0.1.0",
+  "description": "Trae-OpenSpec MCP服务器 - 零命令行的OpenSpec项目创建和管理工具",
+  "main": "mcp-server.js",
+  "bin": {
+    "trae-openspec-mcp": "./mcp-server.js"
+  },
+  "scripts": {
+    "start": "node mcp-server.js",
+    "dev": "node mcp-server.js --debug",
+    "test": "node scripts/test.js",
+    "smoke-test": "node scripts/smoke-test.js",
+    "install-global": "npm install -g .",
+    "setup": "node scripts/setup.js"
+  },
+  "keywords": [
+    "openspec",
+    "mcp",
+    "trae",
+    "ai",
+    "project-generator",
+    "spec-generator",
+    "code-optimization",
+    "gui",
+    "no-cli"
+  ],
+  "author": "OpenSpec Team",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.4.0",
+    "chalk": "^4.1.2",
+    "fs-extra": "^11.1.1",
+    "yaml": "^2.3.4",
+    "commander": "^11.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2",
+    "jest": "^29.7.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leon30083/trae-openspec-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/leon30083/trae-openspec-mcp/issues"
+  },
+  "homepage": "https://github.com/leon30083/trae-openspec-mcp#readme"
+}
