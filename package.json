@@ -48,5 +48,16 @@
   "bugs": {
     "url": "https://github.com/leon30083/trae-openspec-mcp/issues"
   },
-  "homepage": "https://github.com/leon30083/trae-openspec-mcp#readme"
+  "homepage": "https://github.com/leon30083/trae-openspec-mcp#readme",
+  "files": [
+    "mcp-server.js",
+    "package.json",
+    "README.md",
+    "INSTALLATION.md",
+    "USAGE.md",
+    "EXAMPLES.md",
+    "TROUBLESHOOTING.md",
+    "PUBLISHING.md",
+    ".gitattributes"
+  ]
 }
