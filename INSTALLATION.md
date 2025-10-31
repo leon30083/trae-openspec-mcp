@@ -129,25 +129,7 @@ custom-templates/
 
 ### 2. 添加MCP服务器（JSON方式）
 
-在 Trae 的配置中加入如下 JSON：
-
-```json
-{
-  "mcpServers": {
-    "trae-openspec-mcp": {
-      "command": "node",
-      "args": [
-        "mcp-server.js"
-      ],
-      "cwd": "<你的本地路径>/trae-openspec-mcp"
-    }
-  }
-}
-```
-
-说明：
-- 将 `cwd` 设置为仓库根目录（包含 `mcp-server.js`）。
-- 若你未来发布到 npm，可改为使用 `npx`：
+在 Trae 的配置中加入如下 JSON（推荐使用已发布版 npx）：
 
 ```json
 {
@@ -155,6 +137,24 @@ custom-templates/
     "trae-openspec-mcp": {
       "command": "npx",
       "args": ["-y", "trae-openspec-mcp"]
+    }
+  }
+}
+```
+
+说明：
+- 使用 `npx` 时可省略 `cwd`，由 npm 解析安装目录。
+- Windows 路径注意事项：若使用本地开发模式，请在 JSON 中使用双反斜杠 `\\`。
+
+如需本地开发模式（克隆仓库后运行），使用 `node + cwd`：
+
+```json
+{
+  "mcpServers": {
+    "trae-openspec-mcp": {
+      "command": "node",
+      "args": ["mcp-server.js"],
+      "cwd": "F\\\\Cursor\\\\OpenSpec\\\\mcp-tools"
     }
   }
 }

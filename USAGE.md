@@ -8,7 +8,20 @@
 
 ### MCP 服务器配置（Trae JSON）
 
-使用 Trae 的 JSON 配置方式添加 MCP 服务器：
+使用 Trae 的 JSON 配置方式添加 MCP 服务器（推荐使用已发布版 npx）：
+
+```json
+{
+  "mcpServers": {
+    "trae-openspec-mcp": {
+      "command": "npx",
+      "args": ["-y", "trae-openspec-mcp"]
+    }
+  }
+}
+```
+
+如需本地开发模式（克隆仓库后运行），使用 `node + cwd`：
 
 ```json
 {
@@ -16,7 +29,7 @@
     "trae-openspec-mcp": {
       "command": "node",
       "args": ["mcp-server.js"],
-      "cwd": "<你的本地路径>/trae-openspec-mcp"
+      "cwd": "F\\\\Cursor\\\\OpenSpec\\\\mcp-tools"
     }
   }
 }
@@ -30,8 +43,9 @@
 {
   "mcpServers": {
     "trae-openspec-mcp": {
-      "command": "npx",
-      "args": ["-y", "trae-openspec-mcp"]
+      "command": "node",
+      "args": ["mcp-server.js"],
+      "cwd": "<你的本地路径>/trae-openspec-mcp"
     }
   }
 }
