@@ -22,7 +22,7 @@
 
 ```bash
 # 克隆或下载本项目
-git clone https://github.com/your-repo/trae-openspec-mcp.git
+git clone https://github.com/leon30083/trae-openspec-mcp.git
 
 # 进入项目目录
 cd trae-openspec-mcp

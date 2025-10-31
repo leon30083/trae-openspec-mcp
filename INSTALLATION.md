@@ -23,7 +23,7 @@
 
 ```bash
 # 1. 克隆MCP工具仓库
-git clone https://github.com/your-repo/trae-openspec-mcp.git
+git clone https://github.com/leon30083/trae-openspec-mcp.git
 cd trae-openspec-mcp
 
 # 2. 安装依赖
@@ -47,7 +47,7 @@ trae-openspec-mcp
 
 ```bash
 # 1. 克隆仓库
-git clone https://github.com/your-repo/trae-openspec-mcp.git
+git clone https://github.com/leon30083/trae-openspec-mcp.git
 cd trae-openspec-mcp
 
 # 2. 安装开发依赖
