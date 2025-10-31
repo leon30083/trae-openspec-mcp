@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "node mcp-server.js",
-    "dev": "node mcp-server.js --debug",
+    "dev": "nodemon mcp-server.js",
     "test": "node scripts/test.js",
     "smoke-test": "node scripts/smoke-test.js",
     "install-global": "npm install -g .",

@@ -51,33 +51,9 @@ Error: EACCES: permission denied, open 'server.log'
    sudo npm start
    ```
 
-### 问题3：端口被占用
+### 提示：无需端口配置
 
-**错误信息：**
-```
-Error: listen EADDRINUSE: address already in use :::3000
-```
-
-**解决方案：**
-1. 查找占用端口的进程：
-   ```bash
-   # Windows
-   netstat -ano | findstr :3000
-   
-   # macOS/Linux
-   lsof -i :3000
-   ```
-
-2. 终止占用进程：
-   ```bash
-   # Windows
-   taskkill /PID <PID> /F
-   
-   # macOS/Linux
-   kill -9 <PID>
-   ```
-
-3. 修改配置文件使用其他端口
+本项目的MCP服务器通过STDIO与Trae集成，不监听HTTP端口。若遇到连接问题，请参考下方“Trae无法连接MCP服务器”。
 
 ## 🔧 连接问题
 
@@ -88,29 +64,17 @@ Error: listen EADDRINUSE: address already in use :::3000
 - 工具调用超时
 
 **诊断步骤：**
-1. 检查MCP服务器状态：
-   ```bash
-   npm run status
-   ```
-
-2. 查看服务器日志：
-   ```bash
-   tail -f logs/server.log
-   ```
-
-3. 测试网络连接：
-   ```bash
-   curl http://localhost:3000/health
-   ```
+1. 在Trae设置中点击“测试连接”，确认状态为“已连接”。
+2. 查看终端控制台输出（启动命令窗口的输出）。
+3. 确认Trae配置的`command/args/cwd`是否正确（参见README）。
 
 **解决方案：**
-1. 重启MCP服务器：
+1. 终止当前进程（Ctrl+C）后重新启动：
    ```bash
-   npm restart
+   npm start
    ```
-
-2. 检查防火墙设置
-3. 确认Trae配置正确
+2. 检查防火墙或安全软件是否拦截Trae/Node进程。
+3. 重新核对Trae的MCP服务器JSON配置。
 
 ### 问题2：工具调用失败
 
@@ -360,47 +324,15 @@ Tool execution timeout after 30 seconds
 
 ## 🔧 日志和调试
 
-### 启用详细日志
+### 查看运行输出
 
-**配置日志级别：**
-```javascript
-// config.js
-module.exports = {
-  logging: {
-    level: 'debug',
-    file: 'logs/server.log',
-    console: true
-  }
-}
-```
-
-**查看实时日志：**
-```bash
-# 查看服务器日志
-tail -f logs/server.log
-
-# 查看错误日志
-tail -f logs/error.log
-
-# 查看工具调用日志
-tail -f logs/tools.log
-```
+- 本项目通过STDIO与Trae通信，日志直接输出到终端控制台。
+- 以开发模式启动（`npm run dev`）便于观察实时输出与错误栈。
 
 ### 调试工具调用
 
-**启用调试模式：**
-```bash
-DEBUG=mcp:* npm start
-```
-
-**查看工具调用详情：**
-```bash
-# 查看特定工具日志
-grep "create_openspec_project" logs/server.log
-
-# 查看错误详情
-grep -A 5 -B 5 "Error" logs/server.log
-```
+- 在Trae中使用最小化参数进行调用，逐步增加复杂度。
+- 捕获错误信息后，依据提示检查参数格式与必填项。
 
 ## 🔧 常见错误代码
 
@@ -449,8 +381,8 @@ grep -A 5 -B 5 "Error" logs/server.log
 
 ### 自助资源
 
-1. **查看日志文件**：`logs/`目录下的详细日志
-2. **检查配置文件**：确认配置参数正确
+1. **查看控制台输出**：启动窗口的实时日志
+2. **检查Trae配置**：确认 `command`、`args`、`cwd` 正确
 3. **验证依赖版本**：确保所有依赖版本兼容
 4. **搜索已知问题**：查看GitHub Issues
 
@@ -471,6 +403,4 @@ grep -A 5 -B 5 "Error" logs/server.log
 
 ---
 
-💡 **提示**：大多数问题都可以通过查看日志文件和检查配置来解决！
-
-🚀 **下一步**：查看 [ADVANCED.md](./ADVANCED.md) 了解高级配置和自定义选项！
+💡 **提示**：大多数问题都可以通过观察控制台输出与检查Trae配置来解决！

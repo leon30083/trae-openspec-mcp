@@ -60,13 +60,22 @@ npm run dev
 
 ### 3. 启动MCP服务器
 
-```bash
-# 启动服务器
-npm start
+可按安装方式选择对应的启动命令：
 
-# 或使用node直接运行
+```bash
+# A) 本地仓库启动（推荐）
+npm start
+# 或直接使用 Node
 node mcp-server.js
+
+# B) 全局安装后启动（CLI）
+trae-openspec-mcp
+
+# C) 开发模式（自动重启）
+npm run dev
 ```
+
+提示：本MCP服务器采用STDIO传输与Trae集成，无需HTTP端口配置。
 
 ### 4. 在Trae中配置
 
@@ -286,19 +295,14 @@ custom-templates/
 **Q: 工具调用失败**
 - 检查参数格式是否正确
 - 确认必需参数已提供
-- 查看服务器日志获取详细信息
+- 查看控制台输出获取详细信息
 
 ### 调试模式
 
-启动服务器时添加调试标志：
+开发模式会自动重启并输出详细日志：
 
 ```bash
-# 启用调试模式
-DEBUG=mcp:* npm start
-
-# 或设置环境变量
-export DEBUG=mcp:*
-node mcp-server.js
+npm run dev
 ```
 
 ## 📚 示例项目

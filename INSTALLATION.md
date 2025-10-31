@@ -59,47 +59,27 @@ npm run dev
 
 ## ⚙️ 环境配置
 
-### 1. 基础配置
+### 1. 基础配置（可选）
 
-创建配置文件 `mcp-config.json`：
+创建 `mcp-config.json`（当前版本未由服务器读取，仅用于规划与记录）：
 
 ```json
 {
   "server": {
     "name": "trae-openspec-server",
     "version": "0.1.0",
-    "timeout": 30000,
-    "maxRequests": 1000
-  },
-  "logging": {
-    "level": "info",
-    "file": "logs/mcp-server.log"
-  },
-  "templates": {
-    "customTemplatesPath": "./custom-templates",
-    "enableCustomTemplates": true
+    "timeout": 30000
   }
 }
 ```
 
 ### 2. 环境变量
 
-创建 `.env` 文件：
+创建 `.env` 文件（如需真实写盘创建文件）：
 
 ```bash
-# 服务器配置
-MCP_SERVER_PORT=3000
-MCP_SERVER_HOST=localhost
-
-# 日志配置
-LOG_LEVEL=info
-LOG_FILE=logs/mcp-server.log
-
-# 文件创建选项
+# 文件创建选项（false 表示仅生成虚拟文件结构）
 CREATE_REAL_FILES=false
-
-# 调试模式
-DEBUG=mcp:*
 ```
 
 ### 3. 自定义模板配置
@@ -286,85 +266,53 @@ yarn install
 
 ### 常见问题2：MCP服务器无法启动
 
-**问题**：启动时报端口占用或权限错误
+**问题**：启动后无输出或进程立即退出
 
-**解决方案**：
+**解决方案（Windows 10/11）：**
 ```bash
-# 检查端口占用
-netstat -ano | findstr :3000
+# 以本地仓库方式启动
+npm start
 
-# 使用不同端口
-MCP_SERVER_PORT=3001 npm start
+# 以开发模式（自动重启）启动
+npm run dev
 
-# 检查文件权限
-chmod +x mcp-server.js
+# 检查Node版本与路径
+node -v
+where node
 ```
 
 ### 常见问题3：Trae无法连接MCP服务器
 
 **问题**：Trae显示连接失败
 
-**解决方案**：
-1. 确认服务器已启动
-2. 检查工作目录路径是否正确
-3. 验证防火墙设置
-4. 查看服务器日志获取详细信息
+**解决方案（STDIO 模式）：**
+1. 在Trae设置中点击“测试连接”，确认状态为“已连接”。
+2. 检查JSON配置的 `command`/`args`/`cwd` 是否指向正确的脚本与目录。
+3. 终止当前进程（Ctrl+C）后重新运行 `npm start`。
+4. 检查安全软件是否拦截 Trae 或 Node 进程。
 
 ### 常见问题4：工具调用失败
 
 **问题**：工具返回错误信息
 
-**解决方案**：
-```bash
-# 启用调试模式
-DEBUG=mcp:* npm start
-
-# 查看详细日志
-tail -f logs/mcp-server.log
-```
+**解决方案：**
+- 重新核对工具入参格式是否符合 README 中的使用说明。
+- 使用开发模式启动以观察实时输出：`npm run dev`。
+- 尝试最小化输入（仅必要参数），排除复杂上下文影响。
 
 ## 📊 性能监控
 
-### 查看服务器状态
-
-```bash
-# 检查服务器进程
-ps aux | grep mcp-server
-
-# 查看内存使用
-npm run status
-
-# 性能测试
-npm run benchmark
-```
-
-### 日志分析
-
-```bash
-# 查看实时日志
-tail -f logs/mcp-server.log
-
-# 搜索错误日志
-grep ERROR logs/mcp-server.log
-
-# 统计工具使用频率
-grep "Tool called" logs/mcp-server.log | wc -l
-```
+当前版本未内置状态/基准测试命令。建议：
+- 使用开发模式（`npm run dev`）观察实时输出与错误栈。
+- 在Trae中逐一执行工具，评估响应时间与稳定性。
 
 ## 🔐 安全建议
 
 ### 1. 生产环境配置
 
-```json
-{
-  "security": {
-    "enableHTTPS": true,
-    "validateInputs": true,
-    "sanitizeOutputs": true,
-    "enableAuditLog": true
-  }
-}
-```
+- 验证与清洗所有外部输入（尤其是模板变量）。
+- 控制生成文件的目录与权限，避免覆盖敏感路径。
+- 审计关键操作（如真实写盘时记录文件列表与时间戳）。
 
 ### 2. 访问控制
 
@@ -408,8 +356,8 @@ cp -r custom-templates custom-templates-backup
 
 ### 获取帮助
 
-1. **查看日志**：`logs/mcp-server.log`
-2. **启用调试**：`DEBUG=mcp:* npm start`
+1. **查看控制台输出**：启动窗口的实时日志
+2. **开发模式**：`npm run dev`（自动重启，便于观察）
 3. **社区支持**：访问项目GitHub Issues
 4. **文档更新**：定期查看官方文档
 
