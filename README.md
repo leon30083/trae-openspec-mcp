@@ -46,11 +46,36 @@ node mcp-server.js
 1. 打开Trae AI设置
 2. 进入"MCP服务器"配置
 3. 添加新的MCP服务器
-4. 配置服务器信息：
-   - 名称：`Trae-OpenSpec MCP`
-   - 命令：`node`
-   - 参数：`mcp-server.js`
-   - 工作目录：选择当前项目目录
+使用 JSON 方式添加 MCP 服务器，在 Trae 的配置中加入：
+
+```json
+{
+  "mcpServers": {
+    "trae-openspec-mcp": {
+      "command": "node",
+      "args": [
+        "mcp-server.js"
+      ],
+      "cwd": "<你的本地路径>/trae-openspec-mcp"
+    }
+  }
+}
+```
+
+说明：
+- 将 `cwd` 设置为仓库根目录（包含 `mcp-server.js`）。
+- 若已发布到 npm，可改为：
+
+```json
+{
+  "mcpServers": {
+    "trae-openspec-mcp": {
+      "command": "npx",
+      "args": ["-y", "trae-openspec-mcp"]
+    }
+  }
+}
+```
 
 ## 🛠️ 核心工具
 
