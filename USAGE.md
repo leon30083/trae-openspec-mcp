@@ -6,6 +6,37 @@
 
 ## 🛠️ 核心工具
 
+### MCP 服务器配置（Trae JSON）
+
+使用 Trae 的 JSON 配置方式添加 MCP 服务器：
+
+```json
+{
+  "mcpServers": {
+    "trae-openspec-mcp": {
+      "command": "node",
+      "args": ["mcp-server.js"],
+      "cwd": "<你的本地路径>/trae-openspec-mcp"
+    }
+  }
+}
+```
+
+说明：
+- `cwd` 指向包含 `mcp-server.js` 的仓库根目录。
+- 若未来发布到 npm，可切换为：
+
+```json
+{
+  "mcpServers": {
+    "trae-openspec-mcp": {
+      "command": "npx",
+      "args": ["-y", "trae-openspec-mcp"]
+    }
+  }
+}
+```
+
 ### 工具1：创建OpenSpec项目
 
 #### 功能说明

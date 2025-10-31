@@ -127,17 +127,38 @@ custom-templates/
 2. 点击右上角设置图标
 3. 选择"MCP服务器"选项
 
-### 2. 添加MCP服务器
+### 2. 添加MCP服务器（JSON方式）
 
-点击"添加服务器"按钮，填写以下信息：
+在 Trae 的配置中加入如下 JSON：
 
-| 配置项 | 值 | 说明 |
-|--------|----|------|
-| 名称 | Trae-OpenSpec MCP | 服务器显示名称 |
-| 类型 | stdio | 通信类型 |
-| 命令 | node | 执行命令 |
-| 参数 | mcp-server.js | 命令参数 |
-| 工作目录 | /path/to/trae-openspec-mcp | MCP工具目录 |
+```json
+{
+  "mcpServers": {
+    "trae-openspec-mcp": {
+      "command": "node",
+      "args": [
+        "mcp-server.js"
+      ],
+      "cwd": "<你的本地路径>/trae-openspec-mcp"
+    }
+  }
+}
+```
+
+说明：
+- 将 `cwd` 设置为仓库根目录（包含 `mcp-server.js`）。
+- 若你未来发布到 npm，可改为使用 `npx`：
+
+```json
+{
+  "mcpServers": {
+    "trae-openspec-mcp": {
+      "command": "npx",
+      "args": ["-y", "trae-openspec-mcp"]
+    }
+  }
+}
+```
 
 ### 3. 测试连接
 
